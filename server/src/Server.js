@@ -36,7 +36,7 @@ app.get("/get", (request, response) => {
 
             //get all documents of collection
             let cursor = tipCollection.find();
-            console.log(cursor);
+            
             //convert cursor to array to return as response
             return cursor.toArray();
         })
