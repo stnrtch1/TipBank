@@ -3,7 +3,7 @@ use dbTips;
 //drop tips collection if already exists
 db.tips.drop();
 //insert new documents into tips collection
-db.technologies.insert([
+db.tips.insert([
     {
 	"date":"October 19th, 2016",
 	"money":"7.00",

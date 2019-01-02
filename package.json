@@ -8,7 +8,10 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "client": "ng serve --open --live-reload false",
+    "server": "nodemon server/src/Server.js",
+    "mongo": "mongod --dbpath C:/data/db"
   },
   "private": true,
   "dependencies": {
