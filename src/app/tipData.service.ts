@@ -15,6 +15,9 @@ export class TipDataService{
     //array of the Day data
     public days:Day[];
 
+    //the selected day
+    public selected:Day;
+
     //used to determine if loading screen is on
     public loading:boolean = true;
     public status:string;
@@ -34,6 +37,12 @@ export class TipDataService{
                 //the app has the data
                 console.log(JSON.stringify(data));
 
+                //set the days property from the data
+                this.days = data.days
+
+                //set the selected day to the first day by default
+                this.selected = this.days[0];
+                console.log(this.days.length);
                 //once the data is loaded, hide the loading screen
                 this.loading = false;
             },

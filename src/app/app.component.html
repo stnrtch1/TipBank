@@ -1,21 +1,23 @@
-<!--<div class="main">
+<div class="main">
   <div class="header">
       <div class="header__title">The Tip Bank</div>
   </div>
 
   <div class="selection">
       <div class="selection__label">Select the date you would like to view:</div>
-      <select id="lstDates" class="selection__dropdown"></select>
+      <select id="lstDates" class="selection__dropdown" [(ngModel)]="tipData.selected">
+          <option *ngFor="let day of tipData.days" [ngValue]="day">{{day.date}}</option>
+      </select>
   </div>
   
   <div class="data">
       <div class="data__parts">
-          <div class="data__tips">Total Money: ${{}}</div>
-          <div class="data__hours">Total Hours: {{}}</div>
+          <div class="data__tips">Total Money: ${{tipData.selected.money}}</div>
+          <div class="data__hours">Total Hours: {{tipData.selected.hours}}</div>
       </div>
       <div class="data__total">
-        You made ${{}} in tips over {{}} hours of work.
-        You've made ${{}} per hour.
+        You made ${{tipData.selected.money}} in tips over {{tipData.selected.hours}} hours of work.
+        You've made ${{tipData.selected.money/tipData.selected.hours | number:'1.2-2'}} per hour.
       </div>
   </div>
 
@@ -34,5 +36,4 @@
       </div>
   </div>
 </div>
--->
 

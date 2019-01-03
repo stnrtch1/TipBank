@@ -9,7 +9,7 @@ import { TipDataService } from "./tipData.service";
 })
 export class AppComponent{
 
-  constructor(private data:TipDataService) {}
+  constructor(private tipData:TipDataService) {}
   
   //booleans to show/hide sections
   public showTotal:boolean = false;
@@ -18,6 +18,6 @@ export class AppComponent{
 
   public ngOnInit():void{
     console.log("Initalizing!");
-    this.data.load();
+    this.tipData.load();
   }
 }
