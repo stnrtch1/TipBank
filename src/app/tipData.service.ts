@@ -22,6 +22,10 @@ export class TipDataService{
     public loading:boolean = true;
     public status:string;
 
+    //used for the grand total variables
+    public totalTips:number;
+    public totalHours:number;
+
     //inject Http service into DataService
     constructor(myHttp:HttpClient){
         this.http = myHttp;
@@ -45,6 +49,8 @@ export class TipDataService{
                 console.log(this.days.length);
                 //once the data is loaded, hide the loading screen
                 this.loading = false;
+
+                this.getGrandTotal();
             },
             err => {
                 //data failed to load
@@ -54,4 +60,17 @@ export class TipDataService{
         )
     }
 
+    //get the grand total of tips made
+    public getGrandTotal():void{
+        let tips:number = 0;
+        let hours:number = 0;
+
+        for (let i=0; i<this.days.length;i++){
+            tips += parseInt(this.days[i].money);
+            hours += parseInt(this.days[i].hours);
+        }
+
+        this.totalTips = tips;
+        this.totalHours = hours;
+    }
 }

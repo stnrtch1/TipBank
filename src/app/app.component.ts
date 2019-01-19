@@ -20,4 +20,21 @@ export class AppComponent{
     console.log("Initalizing!");
     this.tipData.load();
   }
+
+  //------------------------------------------------------------------toggle functions
+  public toggleTotal():void{
+    this.showTotal = !this.showTotal;
+    console.log(this.showTotal);
+  }
+
+  public toggleTips():void{
+    this.showTipInterval = !this.showTipInterval;
+    console.log(this.showTipInterval);
+  }
+
+  public toggleHours():void{
+    this.showHourInterval = !this.showHourInterval;
+    console.log(this.showHourInterval);
+  }
+
 }

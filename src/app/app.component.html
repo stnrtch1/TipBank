@@ -23,16 +23,23 @@
 
   <div class="misc">
       <div class="total">
-          <input type="button" value="Show Grand Total" class="button" />
-          <div class="total__results"></div>
+          <input type="button" value="Show Grand Total" class="button" (click)="toggleTotal()"/>
+          <div class="total__results" *ngIf="showTotal">
+            You've made ${{tipData.totalTips}} in tips over {{tipData.totalHours}} hours of work.<br>
+            This leads to average of ${{tipData.totalTips/tipData.totalHours | number:'1.2-2'}} per hour.
+          </div>
       </div>
       <div class="tipSection">
-          <input type="button" value="Show Tip Intervals" class="button" />
-          <div class="tipSection__results"></div>
+          <input type="button" value="Show Tip Intervals" class="button" (click)="toggleTips()"/>
+          <div class="tipSection__results" *ngIf="showTipInterval">
+            In {{tipData.days.length}} days,
+          </div>
       </div>
       <div class="hourSection">
-          <input type="button" value="Show Hour Intervals" class="button" />
-          <div class="hourSection__results"></div>
+          <input type="button" value="Show Hour Intervals" class="button" (click)="toggleHours()"/>
+          <div class="hourSection__results" *ngIf ="showHourInterval">
+            In {{tipData.days.length}} days,
+          </div>
       </div>
   </div>
 </div>
