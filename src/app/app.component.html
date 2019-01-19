@@ -32,13 +32,22 @@
       <div class="tipSection">
           <input type="button" value="Show Tip Intervals" class="button" (click)="toggleTips()"/>
           <div class="tipSection__results" *ngIf="showTipInterval">
-            In {{tipData.days.length}} days,
+            In {{tipData.days.length}} days: <br>
+            You had an average of under $1 per hour for {{tipData.underOne}} days, <br>
+            an average between $1 and $1.49 for {{tipData.lowerOne}} days, <br>
+            an average of $1.50 and $1.99 for {{tipData.highOne}} days, <br>
+            and an average of over $2 for {{tipData.twoLongBreak}} days.
           </div>
       </div>
       <div class="hourSection">
           <input type="button" value="Show Hour Intervals" class="button" (click)="toggleHours()"/>
           <div class="hourSection__results" *ngIf ="showHourInterval">
-            In {{tipData.days.length}} days,
+            In {{tipData.days.length}} days: <br>
+            You worked under 4.5 hours for {{tipData.noBreak}} days, <br>
+            above 4.5 and under 6 for {{tipData.oneBreak}} days, <br>
+            above 6 and under 8 for {{tipData.oneLongBreak}} days, <br>
+            above 8 and under 10 for {{tipData.twoBreak}} days, <br>
+            and over 10 hours for {{tipData.twoLongBreak}} days.
           </div>
       </div>
   </div>

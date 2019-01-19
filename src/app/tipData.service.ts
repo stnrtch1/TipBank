@@ -26,6 +26,19 @@ export class TipDataService{
     public totalTips:number;
     public totalHours:number;
 
+    //used for the tipSection variables
+    public underOne:number;
+    public lowerOne:number;
+    public highOne:number;
+    public aboveTwo:number;
+
+    //used for the hourSection variables
+    public noBreak:number;
+    public oneBreak:number;
+    public oneLongBreak:number;
+    public twoBreak:number;
+    public twoLongBreak:number;
+
     //inject Http service into DataService
     constructor(myHttp:HttpClient){
         this.http = myHttp;
@@ -50,7 +63,7 @@ export class TipDataService{
                 //once the data is loaded, hide the loading screen
                 this.loading = false;
 
-                this.getGrandTotal();
+                this.getStatistics();
             },
             err => {
                 //data failed to load
@@ -60,17 +73,77 @@ export class TipDataService{
         )
     }
 
-    //get the grand total of tips made
-    public getGrandTotal():void{
+    //the stats for the various buttons
+    public getStatistics():void{
         let tips:number = 0;
         let hours:number = 0;
+        //-----------------------------------------
+        //underOne is any amount below $1
+        let uO:number = 0;
+        //lowerOne is any amount between $1 and $1.49
+        let lO:number = 0;
+        //highOne is any amount between $1.50 and $1.99
+        let hO:number = 0;
+        //aboveTwo is any amount above $2
+        let aT:number = 0;
+        //-----------------------------------------
+        //noBreak is any hours below 4.5
+        let nB:number = 0;
+        //oneBreak is any amount above 4.5 and below 6
+        let oB:number = 0;
+        //oneLongBreak is any amount above 6 and below 8
+        let oLB:number = 0;
+        //twoBreak is any amount above 8 and below 10
+        let tB:number = 0;
+        //twoLongBreak is any amount above 10 hours
+        let tLB:number = 0;
 
         for (let i=0; i<this.days.length;i++){
+            //used to determine grand total values
             tips += parseInt(this.days[i].money);
             hours += parseInt(this.days[i].hours);
+
+            //used for tips section values
+            let tpa:number = (parseInt(this.days[i].money)/parseInt(this.days[i].hours))
+            if (tpa < 1.00){
+                uO++;
+            } else if (tpa >= 1.00 && tpa <= 1.49){
+                lO++;
+            } else if (tpa >= 1.50 && tpa <= 1.99){
+                hO++;
+            } else if (tpa >= 2.00){
+                aT++;
+            }
+
+            //used for hour section values
+            let hour:number = parseInt(this.days[i].hours);
+            if (hour < 4.5){
+                nB++;
+            } else if (hour >= 4.5 && hour < 6){
+                oB++;
+            } else if (hour >= 6 && hour < 8){
+                oLB++;
+            } else if (hour >= 8 && hour < 10){
+                tB++;
+            } else if (hour >= 10){
+                tLB++;
+            }
         }
 
+        //set all variables made
+        //GRAND TOTAL
         this.totalTips = tips;
         this.totalHours = hours;
+        //TIP SECTIONS
+        this.underOne = uO;
+        this.lowerOne = lO;
+        this.highOne = hO;
+        this.aboveTwo = aT;
+        //HOUR SECTIONS
+        this.noBreak = nB;
+        this.oneBreak = oB;
+        this.oneLongBreak = oLB;
+        this.twoBreak = tB;
+        this.twoLongBreak = tLB;
     }
 }
