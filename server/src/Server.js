@@ -60,4 +60,37 @@ app.get("/get", (request, response) => {
     );
 });
 
+//post method
+app.post("/post", (request,response) => {
+    let mongoClient;
+    MongoClient.connect(URL, { useNewUrlParser: true})
+        .then(client => {
+            mongoClient = client;
+            //get reference to database
+            let db = mongoClient.db(DB_NAME);
+            //get reference to collection
+            let tipCollection = db.collection("tips");
+
+            //sanitize all data before sending
+            request.body.date = request.sanitize(request.body.date);
+            request.body.money = request.sanitize(request.body.money);
+            request.body.hours = request.sanitize(request.body.hours);
+
+            return tipCollection.insertOne(request.body);
+        })
+        .then(result => {
+            //set status codes
+            response.status(200);
+            response.send(result);
+            mongoClient.close();
+        })
+        .catch(err => {
+            console.log(`>>> ERROR : ${err}`);
+            response.status(500);
+            response.send({Error: `Server error with post : ${err}`});
+            throw err;
+        }
+    );
+});
+
 app.listen(8080, () => console.log("Listening on port 8080"));
