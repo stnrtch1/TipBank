@@ -153,5 +153,11 @@ export class TipDataService{
         console.log(date);
         console.log(tips);
         console.log(hours);
+        let year = date.substr(0,4);
+        let month = date.substr(5,2);
+        let day = date.substr(8,2);
+        console.log(year);
+        console.log(month);
+        console.log(day);
     }
 }

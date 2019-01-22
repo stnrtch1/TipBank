@@ -21,6 +21,11 @@
     &:hover{
         cursor: pointer;
     }
+
+    &:disabled,&[disabled]{
+        background-color: #013d15;
+        color: #666666;
+    }
 }
 .header {
 
