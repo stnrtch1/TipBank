@@ -80,8 +80,24 @@
 .add {
     @include display-flex();
     flex-flow: column nowrap;
+    margin-top: 25px;
 
-    &__textbox{
+    &__section{
+        @include display-flex();
+        flex-flow: column nowrap;
         margin-top: 10px;
+
+        
+    }
+}
+
+.form{
+    border:solid;
+    padding: 5px;
+    margin-top: 10px;
+
+    &__label {
+        margin-top:5px;
+        margin-bottom:3px;
     }
 }

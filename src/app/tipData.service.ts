@@ -8,6 +8,8 @@ export class TipDataService{
     //all URLS for RESTful API
     //GET REQUEST
     private getScript:string = "http://localhost:8080/get";
+    //POST REQUEST
+    private postScript:string = "http://localhost:8080/post";
 
     // the http service to be injected into the service
     private http:HttpClient;
@@ -145,5 +147,11 @@ export class TipDataService{
         this.oneLongBreak = oLB;
         this.twoBreak = tB;
         this.twoLongBreak = tLB;
+    }
+
+    public sendDay(date:string,tips:number,hours:number){
+        console.log(date);
+        console.log(tips);
+        console.log(hours);
     }
 }

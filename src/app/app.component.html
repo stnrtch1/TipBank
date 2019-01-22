@@ -51,5 +51,21 @@
           </div>
       </div>
   </div>
+
+  <div class="add">
+      <input type="button" value="Add New Day" class="button" (click)="toggleNewDay()">
+      <div class="form" *ngIf="showNewDay">
+        <div class="form__label">Select Date:</div>
+        <input class="form__textbox" type="date" [(ngModel)]="date" />
+        <div class="form__label">Tips Made:</div>
+        <input class="form__textbox" type="number" [(ngModel)]="money"/>
+        <div class="form__label">Hours Worked:</div>
+        <input class="form__textbox" type="number" [(ngModel)]="hours"/>
+
+        <div class="form__button-set">
+            <button class="button" [disabled]="!date || !money || !hours" (click)="tipData.sendDay(date,money,hours)">Submit</button>
+        </div>
+      </div>
+  </div> 
 </div>
 
