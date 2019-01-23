@@ -114,8 +114,12 @@
         margin-top:5px;
         margin-bottom:5px;
     }
+
+    &__disabled{
+        color:#666666;
+    }
 }
 
-.delete {
+.delete, .update {
     margin-top: 10px;
 }

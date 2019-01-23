@@ -78,5 +78,21 @@
           </div>
       </div>
   </div>
+
+  <div class="update">
+      <input type=button value="Edit This Day" class="button" (click)="toggleEdit()">
+      <div class="form" *ngIf="showEdit">
+          <div class="form__label">Date:</div>
+          <div class="form__disabled">{{tipData.selected.date}}</div>
+          <div class="form__label">Tips Made:</div>
+          <input class="form__textbox" type="number" value="{{tipData.selected.money}}" [(ngModel)]="money"/>
+          <div class="form__label">Hours Worked:</div>
+          <input class="form__textbox" type="number" value="{{tipData.selected.money}}" [(ngModel)]="hours"/>
+          <div class="form__button-set">
+            <button class="button" (click)="tipData.editDay(tipData.selected._id,tipData.selected.date,money,hours)">Submit</button>
+          </div>
+      </div>
+      
+  </div>
 </div>
 

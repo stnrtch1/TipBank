@@ -17,10 +17,19 @@ export class AppComponent{
   public showHourInterval:boolean = false;
   public showNewDay:boolean = false;
   public showDelete:boolean = false;
+  public showEdit:boolean = false;
+
+  //values needed for editing days
+  public dayMoney:string;
+  public dayHours:string;
 
   public ngOnInit():void{
     console.log("Initalizing!");
     this.tipData.load();
+
+    //populate values for editing days
+    this.dayMoney = this.tipData.selected.money;
+    this.dayHours = this.tipData.selected.hours;
   }
 
   //------------------------------------------------------------------toggle functions
@@ -46,5 +55,10 @@ export class AppComponent{
   public toggleDelete():void{
     this.showDelete = !this.showDelete;
   }
+
+  public toggleEdit():void{
+    this.showEdit = !this.showEdit;
+  }
+
 
 }

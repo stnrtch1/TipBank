@@ -176,6 +176,11 @@ export class TipDataService{
         
     }
 
+    public editDay(money:string,hours:string){
+        console.log(money);
+        console.log(hours);
+    }
+
     //this method deletes a day from the api
     public deleteDay(id:string):void{
         //create the full URL to send
