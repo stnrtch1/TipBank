@@ -10,6 +10,8 @@ export class TipDataService{
     private getScript:string = "http://localhost:8080/get";
     //POST REQUEST
     private postScript:string = "http://localhost:8080/post";
+    //DELETE REQUEST
+    private deleteScript:string = "http://localhost:8080/delete";
 
     // the http service to be injected into the service
     private http:HttpClient;
@@ -149,6 +151,7 @@ export class TipDataService{
         this.twoLongBreak = tLB;
     }
 
+    //this method will send a day to the api
     public sendDay(date:string,tips:number,hours:number):void{
         //separate the date string for conversion
         let year = date.substr(0,4);
@@ -171,6 +174,20 @@ export class TipDataService{
             }
         )
         
+    }
+
+    //this method deletes a day from the api
+    public deleteDay(id:string):void{
+        //create the full URL to send
+        let script = this.deleteScript + "/" + id;
+
+        //then delete the day
+        this.http.delete<string>(script).subscribe(
+            res => {
+                //once the day is deleted, reload the data
+                this.load();
+            }
+        )
     }
 
     //-----------------------------------------------------------------private methods
