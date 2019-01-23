@@ -94,6 +94,33 @@ app.post("/post", (request,response) => {
 });
 
 //delete method
+app.delete("/delete/:id", (request,response) => {
+    //get the id from the request body
+    let id = ObjectId(request.params.id);
+
+    let mongoClient;
+    MongoClient.connect(URL, { useNewUrlParser: true })
+        .then(client => {
+            mongoClient = client;
+            //get reference to database... you get the point now
+            let db = mongoClient.db(DB_NAME);
+            let tipCollection = db.collection("tips");
+
+            return tipCollection.deleteOne({"_id":id});
+        })
+        .then(result => {
+            response.status(200);
+            response.send(result);
+            mongoClient.close();
+        })
+        .catch(err => {
+            console.log(`>>> ERROR : ${err}`);
+            response.status(406);
+            response.send({Error: `Server error with delete : ${err}`});
+            throw err;
+        }
+    );
+});
 
 
 app.listen(8080, () => console.log("Listening on port 8080"));
