@@ -149,15 +149,54 @@ export class TipDataService{
         this.twoLongBreak = tLB;
     }
 
-    public sendDay(date:string,tips:number,hours:number){
-        console.log(date);
-        console.log(tips);
-        console.log(hours);
+    public sendDay(date:string,tips:number,hours:number):void{
+        //separate the date string for conversion
         let year = date.substr(0,4);
         let month = date.substr(5,2);
         let day = date.substr(8,2);
-        console.log(year);
-        console.log(month);
-        console.log(day);
+
+        let myDate = this.convertDate(year,month,day);
+
+
+        let sendJSON = {
+            "date": myDate,
+            "money": tips,
+            "hours": hours
+        }
+
+        this.http.post<string>(this.postScript,sendJSON).subscribe(
+            res => {
+                //once everything is done, reload the data
+                this.load();
+            }
+        )
+        
+    }
+
+    //-----------------------------------------------------------------private methods
+    private convertDate(year:string,month:string,day:string):string{
+        //convert month into an number
+        let myMonth = parseInt(month);
+
+        //check if a day has a 0 in front of it and remove it if it does
+        if(day.indexOf("0") == 0){
+            day = day.substr(1,1);
+        }
+
+        //array of month values
+        let months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        
+        //set up the day prefix
+        if(day == "1" || day == "21" || day == "31"){
+            day = day + "st";
+        } else if (day == "2" || day == "22"){
+            day = day + "nd";
+        } else if (day == "3" || day == "23"){
+            day = day + "rd";
+        } else{
+            day = day + "th";
+        }
+
+        return months[myMonth-1] + " " + day + ", " + year;
     }
 }
