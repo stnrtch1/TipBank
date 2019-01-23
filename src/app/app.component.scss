@@ -26,6 +26,10 @@
         background-color: #013d15;
         color: #666666;
     }
+
+    &--delete{
+        background-color: #ff0000;
+    }
 }
 .header {
 
@@ -105,4 +109,13 @@
         margin-top:5px;
         margin-bottom:3px;
     }
+
+    &__button-set{
+        margin-top:5px;
+        margin-bottom:5px;
+    }
+}
+
+.delete {
+    margin-top: 10px;
 }

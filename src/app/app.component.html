@@ -66,6 +66,17 @@
             <button class="button" [disabled]="!date || !money || !hours" (click)="tipData.sendDay(date,money,hours)">Submit</button>
         </div>
       </div>
-  </div> 
+  </div>
+  
+  <div class="delete">
+      <input type="button" value="Delete This Day" class="button button--delete" (click)="toggleDelete()">
+      <div class="form" *ngIf="showDelete">
+          <div class="form__label">Are you sure you want to delete this day?</div>
+          <div class="form__button-set">
+            <button class="button button--delete" (click)="tipData.deleteDay(tipData.selected._id)">Yes, Delete This</button>
+            <button class="button" (click)="toggleDelete()">No, Turn This Off</button>
+          </div>
+      </div>
+  </div>
 </div>
 

@@ -93,4 +93,7 @@ app.post("/post", (request,response) => {
     );
 });
 
+//delete method
+
+
 app.listen(8080, () => console.log("Listening on port 8080"));

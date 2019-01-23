@@ -16,6 +16,7 @@ export class AppComponent{
   public showTipInterval:boolean = false;
   public showHourInterval:boolean = false;
   public showNewDay:boolean = false;
+  public showDelete:boolean = false;
 
   public ngOnInit():void{
     console.log("Initalizing!");
@@ -40,6 +41,10 @@ export class AppComponent{
 
   public toggleNewDay():void{
     this.showNewDay = !this.showNewDay;
+  }
+
+  public toggleDelete():void{
+    this.showDelete = !this.showDelete;
   }
 
 }
