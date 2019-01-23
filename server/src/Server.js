@@ -93,6 +93,46 @@ app.post("/post", (request,response) => {
     );
 });
 
+//put method
+app.put("/put", (request,response) => {
+    let mongoClient;
+    MongoClient.connect(URL, { useNewUrlParser: true})
+        .then(client => {
+            let db = mongoClient.db(DB_NAME);
+            let tipCollection = db.collection("tips");
+
+            //sanitize all form data
+            let id = ObjectId(request.sanitize(request.body.id));
+            request.body.date = request.sanitize(request.body.date);
+            request.body.money = request.sanitize(request.body.money);
+            request.body.hours = request.sanitize(request.body.hours);
+
+            //select the id and set the new values
+            let selector = {"_id":id};
+            let newValues = {"$set":
+                                {"date":request.body.date,
+                                "money":request.body.money,
+                                "hours":request.body.hours}
+                            };
+            
+            //update the collection
+            return tipCollection.updateOne(selector,newValues);
+        })
+        .then(result => {
+            //set status codes
+            response.status(200);
+            response.send(result);
+            mongoClient.close();
+        })
+        .catch(err => {
+            console.log(`>>> ERROR : ${err}`);
+            response.status(500);
+            response.send({Error: `Server error with post : ${err}`});
+            throw err;
+        }
+    );
+});
+
 //delete method
 app.delete("/delete/:id", (request,response) => {
     //get the id from the request body
