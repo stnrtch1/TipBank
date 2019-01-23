@@ -98,6 +98,7 @@ app.put("/put", (request,response) => {
     let mongoClient;
     MongoClient.connect(URL, { useNewUrlParser: true})
         .then(client => {
+            mongoClient = client;
             let db = mongoClient.db(DB_NAME);
             let tipCollection = db.collection("tips");
 

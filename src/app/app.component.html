@@ -87,7 +87,7 @@
           <div class="form__label">Tips Made:</div>
           <input class="form__textbox" type="number" value="{{tipData.selected.money}}" [(ngModel)]="money"/>
           <div class="form__label">Hours Worked:</div>
-          <input class="form__textbox" type="number" value="{{tipData.selected.money}}" [(ngModel)]="hours"/>
+          <input class="form__textbox" type="number" value="{{tipData.selected.hours}}" [(ngModel)]="hours"/>
           <div class="form__button-set">
             <button class="button" (click)="tipData.editDay(tipData.selected._id,tipData.selected.date,money,hours)">Submit</button>
           </div>

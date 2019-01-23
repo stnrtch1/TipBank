@@ -10,6 +10,8 @@ export class TipDataService{
     private getScript:string = "http://localhost:8080/get";
     //POST REQUEST
     private postScript:string = "http://localhost:8080/post";
+    //PUT REQUEST
+    private putScript:string = "http://localhost:8080/put";
     //DELETE REQUEST
     private deleteScript:string = "http://localhost:8080/delete";
 
@@ -176,9 +178,21 @@ export class TipDataService{
         
     }
 
-    public editDay(money:string,hours:string){
-        console.log(money);
-        console.log(hours);
+    public editDay(id:string,date:string,money:string,hours:string){
+        //create the json data
+        let sendJSON = {
+            "id":id,
+            "date":date,
+            "money":money,
+            "hours":hours
+        }
+
+        this.http.put<string>(this.putScript,sendJSON).subscribe(
+            res => {
+                //load everything once done
+                this.load();
+            }
+        )
     }
 
     //this method deletes a day from the api
