@@ -12,7 +12,7 @@
 .button {
     border-radius: 10px;
     color: #ffffff;
-    background-color: #007a29;
+    background-color: $accent-color;
     border: none;
     outline: none;
     width: 150px;
@@ -28,14 +28,14 @@
     }
 
     &--delete{
-        background-color: #ff0000;
+        background-color: $danger-color;
     }
 }
 .header {
 
     &__title{
         font-size: 36px;
-        color: #007a29;
+        color: $accent-color;
     }
 }
 
@@ -51,7 +51,7 @@
         padding-left: 20px;
         border-radius: 10px;
         color: #ffffff;
-        background-color: #007a29;
+        background-color: $accent-color;
         width: 200px;
         height: 50px;
         outline: none;
@@ -95,7 +95,6 @@
         @include display-flex();
         flex-flow: column nowrap;
         margin-top: 10px;
-
         
     }
 }
@@ -116,7 +115,7 @@
     }
 
     &__disabled{
-        color:#666666;
+        color:$accent-color;
     }
 }
 

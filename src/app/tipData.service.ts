@@ -66,10 +66,12 @@ export class TipDataService{
                 //set the selected day to the first day by default
                 this.selected = this.days[0];
                 console.log(this.days.length);
+                this.getStatistics();
+
                 //once the data is loaded, hide the loading screen
                 this.loading = false;
 
-                this.getStatistics();
+                
             },
             err => {
                 //data failed to load
@@ -155,6 +157,9 @@ export class TipDataService{
 
     //this method will send a day to the api
     public sendDay(date:string,tips:number,hours:number):void{
+        this.loading = true;
+        this.status = "Adding The Day...";
+
         //separate the date string for conversion
         let year = date.substr(0,4);
         let month = date.substr(5,2);
@@ -179,6 +184,9 @@ export class TipDataService{
     }
 
     public editDay(sent:Day){
+        this.loading = true;
+        this.status = "Editing The Day...";
+
         //create the json data
         let sendJSON = {
             "id":sent._id,
@@ -197,6 +205,9 @@ export class TipDataService{
 
     //this method deletes a day from the api
     public deleteDay(id:string):void{
+        this.loading = true;
+        this.status = "Deleting The Day...";
+
         //create the full URL to send
         let script = this.deleteScript + "/" + id;
 
