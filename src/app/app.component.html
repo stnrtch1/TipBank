@@ -65,7 +65,7 @@
         <input class="form__textbox" type="number" [(ngModel)]="hours"/>
 
         <div class="form__button-set">
-            <button class="button" [disabled]="!date || !money || !hours" (click)="tipData.sendDay(date,money,hours)">Submit</button>
+            <button class="button" [disabled]="!date || !money || !hours" (click)="sendDay(date,money,hours)">Submit</button>
         </div>
       </div>
   </div>
@@ -75,7 +75,7 @@
       <div class="form" *ngIf="showDelete">
           <div class="form__label">Are you sure you want to delete this day?</div>
           <div class="form__button-set">
-            <button class="button button--delete" (click)="tipData.deleteDay(tipData.selected._id)">Yes, Delete This</button>
+            <button class="button button--delete" (click)="deleteDay(tipData.selected._id)">Yes, Delete This</button>
             <button class="button" (click)="toggleDelete()">No, Turn This Off</button>
           </div>
       </div>
@@ -91,7 +91,7 @@
           <div class="form__label">Hours Worked:</div>
           <input class="form__textbox" type="number" [(ngModel)]="tipData.selected.hours"/>
           <div class="form__button-set">
-            <button class="button" [disabled]="!tipData.selected.money || !tipData.selected.hours" (click)="tipData.editDay(tipData.selected)">Submit</button>
+            <button class="button" [disabled]="!tipData.selected.money || !tipData.selected.hours" (click)="editDay(tipData.selected)">Submit</button>
           </div>
       </div>
       

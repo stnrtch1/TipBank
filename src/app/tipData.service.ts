@@ -157,8 +157,6 @@ export class TipDataService{
 
     //this method will send a day to the api
     public sendDay(date:string,tips:number,hours:number):void{
-        this.loading = true;
-        this.status = "Adding The Day...";
 
         //separate the date string for conversion
         let year = date.substr(0,4);
@@ -166,7 +164,6 @@ export class TipDataService{
         let day = date.substr(8,2);
 
         let myDate = this.convertDate(year,month,day);
-
 
         let sendJSON = {
             "date": myDate,
@@ -184,9 +181,6 @@ export class TipDataService{
     }
 
     public editDay(sent:Day){
-        this.loading = true;
-        this.status = "Editing The Day...";
-
         //create the json data
         let sendJSON = {
             "id":sent._id,
@@ -205,9 +199,6 @@ export class TipDataService{
 
     //this method deletes a day from the api
     public deleteDay(id:string):void{
-        this.loading = true;
-        this.status = "Deleting The Day...";
-
         //create the full URL to send
         let script = this.deleteScript + "/" + id;
 

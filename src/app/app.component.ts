@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TipDataService } from "./tipData.service";
+import { Day } from "./tips.model";
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,37 @@ export class AppComponent{
   public ngOnInit():void{
     console.log("Initalizing!");
     this.tipData.load();
+  }
+
+  //------------------------------------------------------------------event handlers
+  //THESE FUNCTIONS ARE IN HERE TO CLOSE THE PANELS ONCE SOMETHING IS DONE
+
+  public sendDay(date:string,money:number,hours:number){
+    //turn on loading screen
+    this.tipData.loading = true;
+    this.tipData.status = "Adding The Day...";
+    //close the form and send the day
+    this.showNewDay = false;
+    this.tipData.sendDay(date,money,hours);
+  }
+
+  public editDay(sent:Day){
+    //turn on loading screen
+    this.tipData.loading = true;
+    this.tipData.status = "Editing The Day...";
+    //close the form and edit the day
+    this.showEdit = false;
+    this.tipData.editDay(sent);
+  }
+
+  public deleteDay(id:string){
+    //turn on loading screen
+    this.tipData.loading = true;
+    this.tipData.status = "Deleting The Day...";
+    //close the form and delete the day
+    this.showDelete = false;
+    this.tipData.deleteDay(id);
+
   }
 
   //------------------------------------------------------------------toggle functions
