@@ -5,6 +5,7 @@ export interface JSONRoot {
 }
 
 export interface Day {
+    _id:   string;
     date:  string;
     money: string;
     hours: string;

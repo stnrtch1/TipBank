@@ -178,10 +178,10 @@ export class TipDataService{
         
     }
 
-    public editDay(id:string,sent:Day){
+    public editDay(sent:Day){
         //create the json data
         let sendJSON = {
-            "id":id,
+            "id":sent._id,
             "date":sent.date,
             "money":sent.money,
             "hours":sent.hours

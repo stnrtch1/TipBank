@@ -89,7 +89,7 @@
           <div class="form__label">Hours Worked:</div>
           <input class="form__textbox" type="number" [(ngModel)]="tipData.selected.hours"/>
           <div class="form__button-set">
-            <button class="button" [disabled]="!tipData.selected.money || !tipData.selected.hours" (click)="tipData.editDay(tipData.selected._id,tipData.selected)">Submit</button>
+            <button class="button" [disabled]="!tipData.selected.money || !tipData.selected.hours" (click)="tipData.editDay(tipData.selected)">Submit</button>
           </div>
       </div>
       
