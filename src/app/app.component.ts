@@ -19,17 +19,9 @@ export class AppComponent{
   public showDelete:boolean = false;
   public showEdit:boolean = false;
 
-  //values needed for editing days
-  public dayMoney:string;
-  public dayHours:string;
-
   public ngOnInit():void{
     console.log("Initalizing!");
     this.tipData.load();
-
-    //populate values for editing days
-    this.dayMoney = this.tipData.selected.money;
-    this.dayHours = this.tipData.selected.hours;
   }
 
   //------------------------------------------------------------------toggle functions

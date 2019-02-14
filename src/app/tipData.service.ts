@@ -178,13 +178,13 @@ export class TipDataService{
         
     }
 
-    public editDay(id:string,date:string,money:string,hours:string){
+    public editDay(id:string,sent:Day){
         //create the json data
         let sendJSON = {
             "id":id,
-            "date":date,
-            "money":money,
-            "hours":hours
+            "date":sent.date,
+            "money":sent.money,
+            "hours":sent.hours
         }
 
         this.http.put<string>(this.putScript,sendJSON).subscribe(
