@@ -73,15 +73,22 @@ export class AppComponent{
   }
 
   public toggleNewDay():void{
+    //show this field and hide the other fields
     this.showNewDay = !this.showNewDay;
+    this.showDelete = false;
+    this.showEdit = false;
   }
 
   public toggleDelete():void{
     this.showDelete = !this.showDelete;
+    this.showNewDay = false;
+    this.showEdit = false;
   }
 
   public toggleEdit():void{
     this.showEdit = !this.showEdit;
+    this.showNewDay = false;
+    this.showDelete = false;
   }
 
 
