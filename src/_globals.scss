@@ -2,6 +2,8 @@
 $accent-color: #007a29;
 $danger-color: #ff0000;
 $font-color: #ffffff;
+//screen width
+$phone: "screen and (max-width:490px)";
 
 @mixin display-flex() {
     display: -webkit-box;

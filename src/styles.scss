@@ -14,6 +14,10 @@ body {
     font-size: 20px;
     color: #FFFFFF;
     background-color: #232323;
+
+    @media #{$phone}{
+        font-size: 14px;
+    }
 }
 
 .loadingOverlay {
@@ -33,4 +37,8 @@ body {
     color: #FFFFFF;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 48px;
+
+    @media #{$phone}{
+        font-size: 24px;
+    }
 }

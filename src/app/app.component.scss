@@ -9,6 +9,17 @@
     @include nearEdge();
 }
 
+.header {
+    &__title{
+        font-size: 36px;
+        color: $accent-color;
+
+        @media #{$phone}{
+            font-size: 24px;
+        }
+    }
+}
+
 .button {
     border-radius: 10px;
     color: $font-color;
@@ -30,12 +41,11 @@
     &--delete{
         background-color: $danger-color;
     }
-}
-.header {
 
-    &__title{
-        font-size: 36px;
-        color: $accent-color;
+    @media #{$phone}{
+        font-size: 12px;
+        width: 130px;
+        height: 20px;
     }
 }
 
@@ -56,6 +66,12 @@
         height: 50px;
         outline: none;
         border: none;
+
+        @media #{$phone}{
+            font-size: 12px;
+            width: 175px;
+            height: 40px;
+        }
     }
 }
 
@@ -70,20 +86,30 @@
     &__tips{
         margin-right: 10px;
     }
+
+    @media #{$phone}{
+        width: 80%;
+    }
 }
 
 .misc{
     @include separate();
     @include display-flex();
     flex-flow: row wrap;
+
+    @media #{$phone}{
+        flex-flow: column nowrap;
+    }
 }
 
-.total{
+.total, .tipSection{
     margin-right: 5px;
 }
 
-.tipSection{
-    margin-right: 5px;
+.tipSection, .hourSection{
+    @media #{$phone}{
+       margin-top: 5px;
+    }
 }
 
 .add {
