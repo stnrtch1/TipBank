@@ -1,6 +1,7 @@
 let express = require("express");
 let cors = require('cors');
 let MongoClient = require("mongodb").MongoClient;
+const PORT = process.env.PORT || 8080;
 
 //include the bodyParser middleware
 let bodyParser = require("body-parser");
@@ -15,6 +16,8 @@ const DB_NAME = "dbTips";
 
 // construct application object via express
 let app = express();
+// setup middleware for static files location
+app.use(express.static('./dist')); 
 // add cors as middleware
 app.use(cors());
 //adding bodyParser to use json data
@@ -166,4 +169,5 @@ app.delete("/delete/:id", (request,response) => {
 });
 
 
-app.listen(8080, () => console.log("Listening on port 8080"));
+//app.listen(8080, () => console.log("Listening on port 8080"));
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
